@@ -1,4 +1,4 @@
-<template>111111111
+<template>
     <div class="contacts__map">
         <l-map
             :center="[49.84766789957655, 23.959183898781497]"
