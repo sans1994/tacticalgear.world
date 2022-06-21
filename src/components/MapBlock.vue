@@ -7,7 +7,7 @@
             :zoom-animation="true"
             :zoom-animation-threshold="2"
             :marker-zoom-animation="true"
-            :zoom="14"
+            :zoom="2"
         >
             <l-tile-layer :url="tileUrl"/>
             <l-marker
