@@ -1,0 +1,59 @@
+$transitionTime: .8s;
+
+// COLORS
+$whiteBasic: #FFFFFF;
+$blackBasic: #000000;
+$errorColor: #F82D2D;
+$colorGreen: #0B8E4E;
+$colorDarkGreen: #01763D;
+$colorLightGreen: #8DC2A8;
+$colorBlackBg: #141414;
+$colorGreyBorder: #C4C4C4;
+$colorGreyText: #8A8A8A;
+$colorDisabled: #E8E8E8;
+
+
+    // MEDIA QUERIES
+$xlPlus: 2560px;
+$xl: 2048x;
+$lgPlus: 1920px;
+$lg: 1680px;
+$mdPlus: 1440px;
+$md: 1280px;
+$smPlus: 1024px;
+$sm: 768px;
+$xsPlus: 576px;
+$xs: 376px;
+
+// GRID
+$span1: span 1;
+$span2: span 2;
+$span3: span 3;
+$span4: span 4;
+$span5: span 5;
+$span6: span 6;
+$span7: span 7;
+$span8: span 8;
+$span9: span 9;
+$span10: span 10;
+$span11: span 11;
+$span12: span 12;
+$val5px: 5px;
+$val10px: 10px;
+$val15px: 15px;
+$val20px: 20px;
+$val25px: 25px;
+$val30px: 30px;
+$val35px: 35px;
+$val40px: 40px;
+$val45px: 45px;
+$val50px: 50px;
+$val60px: 60px;
+$val80px: 80px;
+$gridPaddingSpacing: 20px;
+
+$containerXl: auto;
+$containerMarginLg: 10%;
+$containerMarginMd: 5.55%;
+$containerMarginSm: 5%;
+$containerMarginXs: 20px;

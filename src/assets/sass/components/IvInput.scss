@@ -1,0 +1,218 @@
+.custom-input {
+    position: relative;
+    width: fit-content;
+    &.black {
+        input {
+            &:hover, &:active, &:focus {
+                &::placeholder {
+                    color: $whiteBasic;
+                }
+            }
+            &:-webkit-autofill,
+            &:-webkit-autofill:hover,
+            &:-webkit-autofill:focus,
+            &:-webkit-autofill:active {
+                -webkit-text-fill-color: $whiteBasic !important;
+            }
+        }
+        &.filled {
+            input {
+                color: $whiteBasic;
+            }
+        }
+    }
+    &.underlined {
+        input {
+            border-left: unset;
+            border-right: unset;
+            border-top: unset;
+            padding-left: 0;
+        }
+        &.error {
+            .custom-input__input {
+                border-left: unset;
+                border-right: unset;
+                border-top: unset;
+            }
+        }
+        &.success {
+            .custom-input__input {
+                border-left: unset;
+                border-right: unset;
+                border-top: unset;
+            }
+        }
+    }
+    &.filled {
+        .input--right {
+            & ~ .custom-input__label,
+            &.floating ~ .custom-input__label {
+                right: 0;
+            }
+        }
+
+        .custom-input__label {
+            transform: translateY(-27px) scale(0.8);
+
+            & ~ .show {
+                opacity: 1;
+            }
+        }
+
+        .floating {
+            & ~ .custom-input__label {
+                transform: translateY(-27px) scale(0.8);
+            }
+        }
+    }
+
+    &.success {
+        .custom-input__input {
+            border: 1px solid $colorGreen;
+            border-radius: 4px;
+            color: #62BD91;
+
+            &::placeholder {
+                color: $colorGreen;
+            }
+        }
+
+        .custom-input__label {
+            color: $colorGreen;
+        }
+    }
+
+    &.error {
+        .custom-input__input {
+            border: 1px solid $errorColor;
+            border-radius: 4px;
+            color: $errorColor;
+
+            &::placeholder {
+                color: $errorColor;
+            }
+        }
+
+        .custom-input__label {
+            color: $errorColor;
+        }
+        & ~ .errors {
+            margin: 5px 0 0 0;
+            .errors__item {
+                font-size: 13px;
+                line-height: 19px;
+                text-align: right;
+                font-weight: 600;
+                color: $errorColor;
+            }
+        }
+    }
+
+    &__input {
+        background-color: transparent;
+        border: 1px solid $colorGreyBorder;
+        border-radius: 2px;
+        outline: none;
+        width: 100%;
+        padding: 15px 20px;
+        position: relative;
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active {
+            transition: background-color 50000s ease-in-out 0s, color 5000s ease-in-out 0s;
+        }
+        &.input--right {
+            text-align: right;
+
+            & ~ .custom-input__label {
+                left: unset;
+                right: 0;
+            }
+
+            & ~ .custom-input__icon {
+                left: 15px;
+                right: unset;
+            }
+
+            &.floating {
+                & ~ .custom-input__label {
+                    right: 15px;
+                }
+            }
+        }
+        &::placeholder {
+            @include transition(color)
+        }
+        &:hover, &:active {
+            border: 1px solid $colorGreen;
+
+        }
+        &:hover, &:active, &:focus {
+            &::placeholder {
+                color: $colorBlackBg;
+            }
+        }
+        &:focus {
+            border-width: 2px;
+
+            &::placeholder,
+            & ~ .show {
+                opacity: 1;
+                transition: opacity 1s;
+            }
+        }
+
+        &.floating {
+            &::placeholder {
+                opacity: 0;
+            }
+
+            & ~ .custom-input__label {
+                transform: translateY(50%);
+            }
+
+            &:focus {
+                &::placeholder {
+                    opacity: 1;
+                    transition: opacity 1s;
+                }
+
+                & ~ .custom-input__label {
+                    right: 0;
+                    transform: translateY(-27px) scale(0.8);
+                }
+            }
+        }
+    }
+
+    &__label {
+        color: #1D1F24;
+        font-weight: 600;
+        position: absolute;
+        top: 0;
+        left: 15px;
+        font-size: 1rem;
+        cursor: text;
+        transition: transform $transitionTime, color $transitionTime, right $transitionTime;
+        transform-origin: 0 100%;
+        text-align: initial;
+        transform: translateY(-27px) scale(0.8);
+    }
+
+    &__icon {
+        position: absolute;
+        top: 50%;
+        height: fit-content;
+        transform: translateY(-50%);
+        right: 15px;
+        width: fit-content;
+        @include flex-center-vert();
+        z-index: 1;
+
+        &.show {
+            opacity: 0;
+        }
+    }
+}
+

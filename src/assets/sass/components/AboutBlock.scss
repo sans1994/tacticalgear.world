@@ -1,0 +1,41 @@
+.about {
+    padding-bottom: 200px;
+    @include media($md) {
+        padding-bottom: 140px;
+    }
+    @include media($xsPlus) {
+        padding-bottom: 80px;
+    }
+    &__title {
+
+    }
+    &__text {
+        margin-top: 40px;
+        max-width: 48vw;
+        margin-left: auto;
+        margin-right: 86px;
+        @include media($md) {
+            margin-top: 30px;
+            max-width: 55vw;
+            margin-right: 0;
+        }
+        @include media($sm - 1) {
+            font-size: 15px;
+            line-height: 20px;
+            margin-top: 20px;
+        }
+        @include media($xsPlus) {
+            max-width: 100vw;
+        }
+    }
+    &__img {
+        margin-top: 60px;
+        height: 675px;
+        object-fit: cover;
+        width: 100%;
+        @include media($sm - 1) {
+            height: 480px;
+            margin-top: 30px;
+        }
+    }
+}

@@ -1,0 +1,185 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@include font-face('Euclid Circular B', 'EuclidCircularB-Bold', 'bold');
+@include font-face('Euclid Circular B', 'EuclidCircularB-Medium', 500);
+@include font-face('Euclid Circular B', 'EuclidCircularB-SemiBold', 600);
+@include font-face('Euclid Circular B', 'EuclidCircularB-Light', 300);
+@include font-face('Euclid Circular B', 'EuclidCircularB-Regular', 400);
+
+body {
+    scroll-behavior: smooth;
+    min-height: 100%;
+    text-rendering: optimizeSpeed;
+    font-family: 'Euclid Circular B', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    background-color: $colorBlackBg;
+    color: $whiteBasic;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+ul, ol, li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+button {
+    border: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+}
+h1 {
+    font-size: 80px;
+    line-height: 96px;
+    @include media($md) {
+        font-size: 58px;
+        line-height: 69px;
+    }
+    @include media($xs) {
+        font-size: 38px;
+        line-height: 48px;
+    }
+}
+
+h2 {
+    font-size: 68px;
+    line-height: 82px;
+    margin-bottom: 60px;
+    @include media($md) {
+        font-size: 50px;
+        line-height: 60px;
+    }
+    @include media($sm - 1) {
+        margin-bottom: 30px;
+        font-size: 32px;
+        line-height: 43px;
+    }
+}
+
+h3 {
+    font-size: 26px;
+    line-height: 32px;
+}
+
+section {
+    padding-top: 200px;
+    overflow: hidden;
+    @include media($mdPlus - 1) {
+        padding-top: 140px;
+    }
+    @include media($sm - 1) {
+        padding-top: 80px;
+    }
+}
+
+.anim-img {
+    width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    @include transition(width, height);
+    object-fit: cover;
+    overflow: hidden;
+    object-position: bottom;
+    @include media($md) {
+        width: 90%;
+    }
+    @include media($sm - 1) {
+        width: calc(100% - 40px);
+    }
+    img {
+        width: 100%;
+    }
+    &.observing {
+        width: 100%;
+        height: 100%;
+    }
+    //width: 1200px;
+    //margin: 0 auto;
+    //height: 562px;
+    //@include transition(width, height);
+    //object-fit: cover;
+    //position: relative;
+    //overflow: hidden;
+    //@include media($md) {
+    //    width: 90%;
+    //}
+    //@include media($sm - 1) {
+    //    width: calc(100% - 40px);
+    //}
+    //img {
+    //    width: 100%;
+    //    position: absolute;
+    //    bottom: 0;
+    //    left: 0;
+    //    @include media($md) {
+    //        position: relative;
+    //        object-fit: cover;
+    //        object-position: bottom center;
+    //        height: 100%;
+    //    }
+    //}
+    //&.observing {
+    //    width: 100%;
+    //    height: 675px;
+    //    @include media($mdPlus) {
+    //        height: 44vw;
+    //    }
+    //    @include media($sm - 1) {
+    //        height: 480px;
+    //    }
+    //}
+    //width: 1200px;
+    //margin: 0 auto;
+    //height: 562px;
+    //background-image: url("../images/main-title-img.jpg");
+    //background-position: bottom center;
+    //background-repeat: no-repeat;
+    //background-size: cover;
+    //@include transition(width, height);
+    //@include media($md) {
+    //    width: 90%;
+    //}
+    //@include media($sm) {
+    //    width: calc(100% - 40px);
+    //    background-image: url("../images/main-title-img-sm.jpg");
+    //}
+    //@include media($xsPlus) {
+    //    background-image: url("../images/main-title-img-xs.jpg");
+    //    height: 408px;
+    //}
+    //&.observing {
+    //    width: 100%;
+    //    height: 44vw;
+    //    @include media($sm) {
+    //        height: 520px;
+    //    }
+    //    @include media($xsPlus) {
+    //        height: 420px;
+    //    }
+    //}
+}

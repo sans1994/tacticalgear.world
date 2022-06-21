@@ -1,0 +1,12 @@
+.scroll-top {
+    position: fixed;
+    bottom: -50px;
+    right: 50px;
+    transition: bottom .3s;
+    z-index: 10;
+    cursor: pointer;
+    &.visible {
+        bottom: 50px;
+        right: 50px;
+    }
+}

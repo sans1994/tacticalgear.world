@@ -1,0 +1,40 @@
+.header {
+    width: 100%;
+    position: sticky;
+    padding: 20px 0;
+    background-color: $colorBlackBg;
+    z-index: 500;
+    @include transition(top, padding, transform);
+    &.sticky {
+        position: fixed;
+        top: -96px;
+        transform: translateY(100%);
+        @include media($sm - 1) {
+            top: -75px;
+        }
+    }
+    .btn {
+        margin-left: 50px;
+        @include media($sm - 1) {
+            display: none;
+        }
+    }
+    &__phone {
+        color: $whiteBasic;
+        @include media($xs) {
+            font-size: 14px;
+            line-height: 19px;
+        }
+    }
+}
+
+.logo {
+    height: 56px;
+    @include media($sm - 1) {
+        max-width: 122px;
+        height: 100%;
+    }
+    @include media($xsPlus) {
+        height: 34px;
+    }
+}

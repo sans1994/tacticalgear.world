@@ -1,0 +1,64 @@
+.btn {
+    background-color: $colorGreen;
+    @include flex-center;
+    cursor: pointer;
+    color: $whiteBasic;
+    padding: 15px 32px;
+    border-radius: 2px;
+    font-size: 18px;
+    line-height: 24px;
+    border: 1px solid transparent;
+    @include transition(background-color);
+    position: relative;
+    &:hover {
+        background-color: $colorDarkGreen;
+    }
+    &.transparent {
+        background-color: transparent;
+        &.icon {
+            padding: 0;
+        }
+    }
+    &:focus {
+        &:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: calc(100% + 8px);
+            height: calc(100% + 8px);
+            border: 2px solid #8DC2A8;
+            border-radius: 4px;
+            transform: translate(-50%, -50%);
+        }
+    }
+    &:active {
+        background-color: $colorDarkGreen;
+    }
+    &:disabled, &.disabled {
+        background-color: $colorDisabled;
+        pointer-events: none;
+        color: $colorGreyText;
+    }
+    &__icon {
+        @include flex-center();
+
+        &.icon--right {
+            order: 1;
+            margin-left: 10px;
+        }
+        &.icon--left {
+            margin-right: 10px;
+        }
+    }
+    &__text {
+        white-space: nowrap;
+        @include media($sm - 1) {
+            font-size: 15px;
+            line-height: 20px;
+        }
+    }
+    &.loading {
+
+    }
+}
