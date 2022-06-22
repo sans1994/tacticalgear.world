@@ -73,9 +73,12 @@ export default {
         }
     },
     mounted() {
-        this.$api.getEntries()
+        this.$api.getEntries({
+            content_type: 'shop'
+        })
             .then(entries => {
-                this.shops = entries.items
+                this.shops = entries.items;
+                console.log(entries.items);
             })
         .catch(err => console.log(err))
     }

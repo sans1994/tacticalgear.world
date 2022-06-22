@@ -22,8 +22,8 @@ import Multiselect from 'vue-multiselect'
 //COMPONENTS//
 
 const api = contentful.createClient({
-	space: '7zmt59h11u46',
-	accessToken: 'Q8kkQy71bXSCu2ZzBCReT6t0ckUe9ZhEody-MkMF51o',
+	space: import.meta.env.VITE_API_SPACE,
+	accessToken: import.meta.env.VITE_API_TOKEN,
 });
 
 export const app = createApp(App);
