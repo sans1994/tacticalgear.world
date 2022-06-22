@@ -38,7 +38,7 @@ export default {
             shops: [],
             iconWidth: 60,
             iconHeight: 60,
-            tileUrl: 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'
+            tileUrl: 'https://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png'
         };
     },
     computed: {
