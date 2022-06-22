@@ -15,7 +15,19 @@
                 :key="idx"
                 :lat-lng="marker.fields.latLng"
                 :icon="getIcon()"
-            />
+            >
+                <l-popup>
+                    <h3>
+                        {{ marker.fields.name }}
+                    </h3>
+                    <a
+                        :href="marker.fields.link"
+                        target="_blank"
+                    >
+                        {{marker.fields.link}}
+                    </a>
+                </l-popup>
+            </l-marker>
         </l-map>
     </div>
 </template>
@@ -23,7 +35,7 @@
 <script>
 import "leaflet/dist/leaflet.css"
 import L from 'leaflet'
-import { LMap, LTileLayer, LMarker } from "@vue-leaflet/vue-leaflet";
+import { LMap, LTileLayer, LMarker, LPopup } from "@vue-leaflet/vue-leaflet";
 import icon from '/src/assets/images/poi.svg'
 
 export default {
@@ -31,7 +43,8 @@ export default {
     components: {
         LMap,
         LTileLayer,
-        LMarker
+        LMarker,
+        LPopup
     },
     data() {
         return {
