@@ -1,11 +1,16 @@
 <template>
-    <div>
-
+    <div class="container">
+        <map-block/>
     </div>
+
 </template>
 
 <script>
+import MapBlock from "../components/MapBlock.vue";
+
 export default {
-    name: 'HomePage'
+    components: {
+        MapBlock
+    }
 }
 </script>

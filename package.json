@@ -19,6 +19,7 @@
     "dotenv": "^16.0.1",
     "leaflet": "^1.8.0",
     "vue": "^3.2.25",
+    "vue-router": "^4.0.12",
     "vue-axios": "^3.4.0",
     "vue-multiselect": "^3.0.0-alpha.2"
   },

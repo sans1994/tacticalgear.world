@@ -2,6 +2,7 @@ import {createApp} from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import App from './App.vue'
+import router from './router'
 import * as contentful from 'contentful'
 
 // SCSS
@@ -30,6 +31,7 @@ app.config.globalProperties.$api = api;
 // GLOBAL PROPERTIES
 
 app.use(VueAxios, axios)
+	.use(router)
 	.component('Icon', Icon)
 	.component('Multiselect', Multiselect)
 	// .component('IvButton', IvButton)
