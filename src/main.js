@@ -9,10 +9,6 @@ import "./assets/sass/app.scss"
 // SCSS
 import './iconify/index.js';
 
-// DIRECTIVES
-// import Maska from "maska"
-// DIRECTIVES
-
 //COMPONENTS//
 import { Icon } from '@iconify/vue'
 import Multiselect from 'vue-multiselect'

@@ -6,11 +6,6 @@
     box-sizing: border-box;
 }
 
-@include font-face('Euclid Circular B', 'EuclidCircularB-Bold', 'bold');
-@include font-face('Euclid Circular B', 'EuclidCircularB-Medium', 500);
-@include font-face('Euclid Circular B', 'EuclidCircularB-SemiBold', 600);
-@include font-face('Euclid Circular B', 'EuclidCircularB-Light', 300);
-@include font-face('Euclid Circular B', 'EuclidCircularB-Regular', 400);
 
 body {
     scroll-behavior: smooth;
@@ -20,8 +15,8 @@ body {
     font-weight: 400;
     font-size: 18px;
     line-height: 24px;
-    background-color: $colorBlackBg;
-    color: $whiteBasic;
+    background-color: $background;
+    color: $background;
 }
 
 a {

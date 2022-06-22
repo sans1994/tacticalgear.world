@@ -1,4 +1,21 @@
-$transitionTime: .8s;
+$transitionTime: .3s;
+
+// COLORS
+$basicWhite: #FFFFFF;
+$basicBlack: #000000;
+$red: #F5001D;
+$warning: #F0AD00;
+$background: #EFF9FE;
+$main: #00A5B8;
+$mainDark: #008999;
+$lightBlue: rgba(0, 165, 184, 0.05);
+$text: #111237;
+$darkGrey: #565656;
+$grey: #999999;
+$greyDisabled: #F2F2F2;
+$overlay: rgba(17, 18, 55, 0.2);
+$shadow: 0 10px 25px rgba(110, 176, 184, 0.1);
+$border: #EFEFEF;
 
 // COLORS
 $whiteBasic: #FFFFFF;
@@ -11,7 +28,6 @@ $colorBlackBg: #141414;
 $colorGreyBorder: #C4C4C4;
 $colorGreyText: #8A8A8A;
 $colorDisabled: #E8E8E8;
-
 
     // MEDIA QUERIES
 $xlPlus: 2560px;
