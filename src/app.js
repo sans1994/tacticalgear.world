@@ -3,6 +3,8 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import App from './App.vue'
 import router from './router'
+import createI18N from './i18n'
+import createStore from './store'
 import * as contentful from 'contentful'
 
 // SCSS
@@ -24,7 +26,7 @@ const api = contentful.createClient({
 });
 
 export const app = createApp(App);
-
+console.log(app);
 // GLOBAL PROPERTIES
 app.config.globalProperties.$axios = axios;
 app.config.globalProperties.$api = api;
@@ -32,6 +34,8 @@ app.config.globalProperties.$api = api;
 
 app.use(VueAxios, axios)
 	.use(router)
+	.use(createI18N)
+	.use(createStore(app))
 	.component('Icon', Icon)
 	.component('Multiselect', Multiselect)
 	// .component('IvButton', IvButton)

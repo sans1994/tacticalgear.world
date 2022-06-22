@@ -133,6 +133,7 @@ export default {
                 content_type: 'shop'
             })
                 .then(entries => {
+                    console.log(entries)
                     this.shops = entries.items
                 })
                 .catch(err => console.log(err))
