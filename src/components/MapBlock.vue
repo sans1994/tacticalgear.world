@@ -24,7 +24,6 @@
             :zoom-animation-threshold="2"
             :marker-zoom-animation="true"
             :zoom="2"
-            @select=""
         >
             <l-tile-layer :url="tileUrl"/>
             <l-marker
@@ -83,7 +82,7 @@ export default {
             return [this.iconWidth, this.iconHeight];
         },
         anchorSize() {
-            return [this.iconWidth / 2, this.iconHeight];
+            return [this.iconWidth / 2, this.iconHeight / 2];
         },
     },
     methods: {
