@@ -1,7 +1,7 @@
 <template>
     <multiselect
         v-model="selectedCountry"
-        :options="countries"
+        :options="GET_COUNTRIES"
         :searchable="true"
         track-by="name"
         label="name"
@@ -27,14 +27,14 @@
         >
             <l-tile-layer :url="tileUrl"/>
             <l-marker
-                v-for="(marker, idx) in shops"
+                v-for="(marker, idx) in GET_SHOPS"
                 :key="idx"
-                :lat-lng="marker.fields.latLng"
+                :lat-lng="marker?.fields?.latLng"
                 :icon="getIcon()"
             >
                 <l-popup
                     :options="{
-                        offset: [0, -20]
+                        offset: [0, 0]
                     }"
                 >
                     <h3>
@@ -44,7 +44,7 @@
                         :href="marker.fields.link"
                         target="_blank"
                     >
-                        {{marker.fields.link}}
+                        {{ marker.fields.link }}
                     </a>
                 </l-popup>
             </l-marker>
@@ -58,6 +58,7 @@ import L from 'leaflet'
 import { LMap, LTileLayer, LMarker, LPopup } from "@vue-leaflet/vue-leaflet";
 import icon from '/src/assets/images/poi.svg'
 import 'vue-multiselect/dist/vue-multiselect.css'
+import {mapActions, mapGetters} from "vuex";
 
 export default {
     name: "MapBlock",
@@ -78,15 +79,22 @@ export default {
         };
     },
     computed: {
+        ...mapGetters([
+            'GET_SHOPS',
+            'GET_COUNTRIES'
+        ]),
         iconSize() {
             return [this.iconWidth, this.iconHeight];
         },
         anchorSize() {
             return [this.iconWidth / 2, this.iconHeight / 2];
-        },
+        }
     },
     methods: {
-
+        ...mapActions([
+            'ACT_GET_SHOPS_BY_COUNTRY',
+            'ACT_GET_SHOPS'
+        ]),
         getIcon() {
             return L.icon({
                 iconUrl: icon,
@@ -94,54 +102,12 @@ export default {
                 iconAnchor: this.anchorSize
             });
         },
-        getShops() {
-            this.$api.getEntries({
-                content_type: 'shop'
-            })
-                .then(entries => {
-                    this.shops = entries.items;
-                    console.log(entries.items);
-                })
-                .catch(err => console.log(err))
-        },
-        getCountries() {
-            this.$api.getEntries({
-                content_type: 'country'
-            })
-                .then(entries => {
-                    entries.items.forEach(item => {
-                        this.countries.push({
-                            name: item.fields.name,
-                            id: item.sys.id
-                        })
-                    })
-                })
-                .catch(err => console.log(err))
-        },
         onCountrySelect(e) {
-            this.$api.getEntries({
-                'fields.country.sys.id': e.id,
-                content_type: 'shop'
-            })
-                .then(entries => {
-                    this.shops = entries.items
-                })
-                .catch(err => console.log(err))
+            this.ACT_GET_SHOPS_BY_COUNTRY(e.id)
         },
         onCountryRemove() {
-            this.$api.getEntries({
-                content_type: 'shop'
-            })
-                .then(entries => {
-                    console.log(entries)
-                    this.shops = entries.items
-                })
-                .catch(err => console.log(err))
+            this.ACT_GET_SHOPS()
         }
-    },
-    created() {
-        this.getShops()
-        this.getCountries()
     }
 }
 </script>
