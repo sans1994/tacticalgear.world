@@ -8,23 +8,23 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue-i18n": "^9.2.0-beta.23",
-    "vuex": "^4.0.2",
-    "vuex-persistedstate": "^4.1.0",
     "@vitejs/plugin-legacy": "^1.6.4",
     "@vue-leaflet/vue-leaflet": "^0.6.1",
     "@vuelidate/core": "*",
     "@vuelidate/validators": "*",
-    "rendertron-middleware": "^0.1.5",
     "autoprefixer": "^10.4.2",
-    "express": "^4.17.2",
     "contentful": "^9.1.32",
     "dotenv": "^16.0.1",
+    "express": "^4.17.2",
     "leaflet": "^1.8.0",
+    "rendertron-middleware": "^0.1.5",
     "vue": "^3.2.25",
-    "vue-router": "^4.0.12",
     "vue-axios": "^3.4.0",
-    "vue-multiselect": "^3.0.0-alpha.2"
+    "vue-i18n": "^9.2.0-beta.23",
+    "vue-multiselect": "^3.0.0-alpha.2",
+    "vue-router": "^4.0.12",
+    "vuex": "^4.0.2",
+    "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {
     "@iconify/vue": "^3.1.1",
