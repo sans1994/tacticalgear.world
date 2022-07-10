@@ -1,8 +1,8 @@
+.leaflet-container {
+    z-index: 1;
+}
 .contacts {
     padding-bottom: 2px;
-    .multiselect {
-        z-index: 999;
-    }
     &__list {
         display: flex;
         flex-wrap: wrap;
