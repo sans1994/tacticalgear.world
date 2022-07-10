@@ -2,7 +2,7 @@
     <div>
 
         <div class="card">
-            <DataTable :value="customers2" :paginator="true" class="p-datatable-customers" :rows="10"
+            <DataTable :value="this.GET_DATA" :paginator="true" class="p-datatable-customers" :rows="10"
                        dataKey="id" v-model:filters="filters2" filterDisplay="row" :loading="loading2" responsiveLayout="scroll"
                        :globalFilterFields="['name','country.name','representative.name','status']">
                 <template #header>
@@ -24,7 +24,7 @@
                         {{data.name}}
                     </template>
                     <template #filter="{filterModel,filterCallback}">
-                        <InputText type="text" v-model="filterModel.value" @keydown.enter="filterCallback()" class="p-column-filter" :placeholder="`Search by name - `" v-tooltip.top.focus="'Hit enter key to filter'"/>
+                        <InputText type="text" v-model="filterModel.value" @input="filterCallback()" @keydown.enter="filterCallback()" class="p-column-filter" :placeholder="`Search by name - `" v-tooltip.top.focus="'Hit enter key to filter'"/>
                     </template>
                 </Column>
                 <Column header="Country" filterField="country.name" style="min-width:12rem">
@@ -36,46 +36,46 @@
                         <InputText type="text" v-model="filterModel.value" @input="filterCallback()" class="p-column-filter" placeholder="Search by country" v-tooltip.top.focus="'Filter as you type'"/>
                     </template>
                 </Column>
-                <Column header="Agent" filterField="representative" :showFilterMenu="false" style="min-width:14rem">
-                    <template #body="{data}">
-                        <img :alt="data.representative.name" src="https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png" width="32" style="vertical-align: middle" />
-                        <span class="image-text">{{data.representative.name}}</span>
-                    </template>
-                    <template #filter="{filterModel,filterCallback}">
-                        <MultiSelect v-model="filterModel.value" @change="filterCallback()" :options="representatives" optionLabel="name" placeholder="Any" class="p-column-filter">
-                            <template #option="slotProps">
-                                <div class="p-multiselect-representative-option">
-                                    <img :alt="slotProps.option.name" src="https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png" width="32" style="vertical-align: middle" />
-                                    <span class="image-text">{{slotProps.option.name}}</span>
-                                </div>
-                            </template>
-                        </MultiSelect>
-                    </template>
-                </Column>
-                <Column field="status" header="Status" :showFilterMenu="false" style="min-width:12rem">
-                    <template #body="{data}">
-                        <span :class="'customer-badge status-' + data.status">{{data.status}}</span>
-                    </template>
-                    <template #filter="{filterModel,filterCallback}">
-                        <Dropdown v-model="filterModel.value" @change="filterCallback()" :options="statuses" placeholder="Any" class="p-column-filter" :showClear="true">
-                            <template #value="slotProps">
-                                <span :class="'customer-badge status-' + slotProps.value" v-if="slotProps.value">{{slotProps.value}}</span>
-                                <span v-else>{{slotProps.placeholder}}</span>
-                            </template>
-                            <template #option="slotProps">
-                                <span :class="'customer-badge status-' + slotProps.option">{{slotProps.option}}</span>
-                            </template>
-                        </Dropdown>
-                    </template>
-                </Column>
-                <Column field="verified" header="Verified" dataType="boolean" style="min-width:6rem">
-                    <template #body="{data}">
-                        <i class="pi" :class="{'true-icon pi-check-circle': data.verified, 'false-icon pi-times-circle': !data.verified}"></i>
-                    </template>
-                    <template #filter="{filterModel,filterCallback}">
-                        <TriStateCheckbox v-model="filterModel.value" @change="filterCallback()"/>
-                    </template>
-                </Column>
+<!--                <Column header="Agent" filterField="representative" :showFilterMenu="false" style="min-width:14rem">-->
+<!--                    <template #body="{data}">-->
+<!--                        <img :alt="data.representative.name" src="https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png" width="32" style="vertical-align: middle" />-->
+<!--                        <span class="image-text">{{data.representative.name}}</span>-->
+<!--                    </template>-->
+<!--                    <template #filter="{filterModel,filterCallback}">-->
+<!--                        <MultiSelect v-model="filterModel.value" @change="filterCallback()" :options="representatives" optionLabel="name" placeholder="Any" class="p-column-filter">-->
+<!--                            <template #option="slotProps">-->
+<!--                                <div class="p-multiselect-representative-option">-->
+<!--                                    <img :alt="slotProps.option.name" src="https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png" width="32" style="vertical-align: middle" />-->
+<!--                                    <span class="image-text">{{slotProps.option.name}}</span>-->
+<!--                                </div>-->
+<!--                            </template>-->
+<!--                        </MultiSelect>-->
+<!--                    </template>-->
+<!--                </Column>-->
+<!--                <Column field="status" header="Status" :showFilterMenu="false" style="min-width:12rem">-->
+<!--                    <template #body="{data}">-->
+<!--                        <span :class="'customer-badge status-' + data.status">{{data.status}}</span>-->
+<!--                    </template>-->
+<!--                    <template #filter="{filterModel,filterCallback}">-->
+<!--                        <Dropdown v-model="filterModel.value" @change="filterCallback()" :options="statuses" placeholder="Any" class="p-column-filter" :showClear="true">-->
+<!--                            <template #value="slotProps">-->
+<!--                                <span :class="'customer-badge status-' + slotProps.value" v-if="slotProps.value">{{slotProps.value}}</span>-->
+<!--                                <span v-else>{{slotProps.placeholder}}</span>-->
+<!--                            </template>-->
+<!--                            <template #option="slotProps">-->
+<!--                                <span :class="'customer-badge status-' + slotProps.option">{{slotProps.option}}</span>-->
+<!--                            </template>-->
+<!--                        </Dropdown>-->
+<!--                    </template>-->
+<!--                </Column>-->
+<!--                <Column field="verified" header="Verified" dataType="boolean" style="min-width:6rem">-->
+<!--                    <template #body="{data}">-->
+<!--                        <i class="pi" :class="{'true-icon pi-check-circle': data.verified, 'false-icon pi-times-circle': !data.verified}"></i>-->
+<!--                    </template>-->
+<!--                    <template #filter="{filterModel,filterCallback}">-->
+<!--                        <TriStateCheckbox v-model="filterModel.value" @change="filterCallback()"/>-->
+<!--                    </template>-->
+<!--                </Column>-->
             </DataTable>
         </div>
     </div>
@@ -84,6 +84,7 @@
 <script>
 import CustomerService from '../service/CustomerService';
 import {FilterMatchMode,FilterOperator} from 'primevue/api';
+import {mapGetters} from "vuex";
 
 export default {
     name: 'DataTableFilterDemo',
@@ -118,6 +119,11 @@ export default {
             loading1: true,
             loading2: true
         }
+    },
+    computed: {
+        ...mapGetters([
+            'GET_DATA'
+        ])
     },
     created() {
         this.customerService = new CustomerService();

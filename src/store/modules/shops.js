@@ -5,17 +5,17 @@ export default (app) => {
 		state: {
 			shops: [],
 			countries: [],
-			data: [
-
-			]
+			data: []
 		},
 		getters: {
 			GET_SHOPS: state => state.shops,
-			GET_COUNTRIES: state => state.countries
+			GET_COUNTRIES: state => state.countries,
+			GET_DATA: state => state.data
 		},
 		mutations: {
 			MUT_SHOPS: (state, data) => state.shops = data,
-			MUT_COUNTRIES: (state, data) => state.countries = data
+			MUT_COUNTRIES: (state, data) => state.countries = data,
+			MUT_DATA: (state, data) => state.data = data
 		},
 		actions: {
 			async ACT_GET_SHOPS({commit}) {
@@ -24,6 +24,13 @@ export default (app) => {
 				})
 					.then(entries => {
 						commit('MUT_SHOPS', entries.items)
+						let newData = [];
+						entries.items.forEach(el => {
+							el.fields.id = el.sys.id;
+							el.fields.country = el.fields.country.fields
+							newData.push(el.fields)
+						})
+						commit('MUT_DATA', newData)
 					})
 					.catch(err => console.log(err))
 			},
