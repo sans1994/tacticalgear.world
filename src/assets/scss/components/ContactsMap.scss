@@ -1,6 +1,23 @@
 .leaflet-container {
     z-index: 1;
 }
+.column--country {
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    img {
+        border-radius: 100%;
+    }
+}
+.p-datatable-customers {
+    .search-wrapper {
+        input, span {
+            width: 100%;
+        }
+    }
+}
 .contacts {
     padding-bottom: 2px;
     &__list {

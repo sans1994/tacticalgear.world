@@ -6,8 +6,8 @@
                        dataKey="id" v-model:filters="filters2" filterDisplay="row" :loading="loading2" responsiveLayout="scroll"
                        :globalFilterFields="['name','country.name','representative.name','status']">
                 <template #header>
-                    <div class="flex justify-content-end">
-                        <span class="p-input-icon-left ">
+                    <div class="flex justify-content-end search-wrapper">
+                        <span class="p-input-icon-left">
                             <i class="pi pi-search" />
                             <InputText v-model="filters2['global'].value" placeholder="Keyword Search" />
                         </span>
@@ -27,13 +27,22 @@
                         <InputText type="text" v-model="filterModel.value" @input="filterCallback()" @keydown.enter="filterCallback()" class="p-column-filter" :placeholder="`Search by name - `" v-tooltip.top.focus="'Hit enter key to filter'"/>
                     </template>
                 </Column>
-                <Column header="Country" filterField="country.name" style="min-width:12rem">
+                <Column header="Country" class="column--country" filterField="country.name" style="min-width:12rem">
                     <template #body="{data}">
-                        <img src="https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png" width="30" />
-                        <span class="image-text">{{data.country.name}}</span>
+                        <div>
+                            <img :src="data.country.img.fields.file.url" width="30" />
+                            <span class="image-text">{{data.country.name}}</span>
+                        </div>
                     </template>
                     <template #filter="{filterModel,filterCallback}">
                         <InputText type="text" v-model="filterModel.value" @input="filterCallback()" class="p-column-filter" placeholder="Search by country" v-tooltip.top.focus="'Filter as you type'"/>
+                    </template>
+                </Column>
+                <Column header="Link" style="min-width:12rem">
+                    <template #body="{data}">
+                        <a :href="data.link" target="_blank">
+                            {{ data.link }}
+                        </a>
                     </template>
                 </Column>
 <!--                <Column header="Agent" filterField="representative" :showFilterMenu="false" style="min-width:14rem">-->
