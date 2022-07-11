@@ -70,7 +70,6 @@
     &__map {
         height: 600px;
         width: 100%;
-        margin-top: 80px;
         @include media($md) {
             margin-top: 60px;
         }
