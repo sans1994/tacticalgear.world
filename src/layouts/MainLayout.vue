@@ -1,8 +1,12 @@
 <template>
-    <div class="container">
-        <TabMenu :model="tabMenuItems" :active-index="active"/>
+    <div class="container page page--home">
         <router-view name="tabsMap"/>
         <router-view name="tabsList"/>
+        <TabMenu
+            :model="tabMenuItems"
+            :active-index="active"
+            class="main-menu"
+        />
     </div>
 </template>
 
@@ -11,7 +15,7 @@
 import {mapActions} from "vuex";
 
 export default {
-    name: 'HomePage',
+    name: 'MainLayout',
     data() {
         return {
             active: 0,
@@ -19,7 +23,7 @@ export default {
                 {
                     label: 'MAP',
                     icon: 'pi pi-map-marker',
-                    to: '/map'
+                    to: '/'
                 },
                 {
                     label: 'LIST',

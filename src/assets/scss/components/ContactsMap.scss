@@ -68,13 +68,10 @@
         }
     }
     &__map {
-        height: 600px;
+        height: calc(100vh - 51px - 41px);
         width: 100%;
-        @include media($md) {
-            margin-top: 60px;
-        }
         .leaflet-container {
-            background-color: #333333;
+            background-color: #b9d3dc;
         }
     }
 }

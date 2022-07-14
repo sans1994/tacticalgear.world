@@ -1,21 +1,4 @@
 <template>
-    <vue-multiselect
-        v-model="selectedCountry"
-        :options="GET_COUNTRIES"
-        :searchable="true"
-        track-by="name"
-        label="name"
-        :close-on-select="true"
-        :show-labels="false"
-        placeholder="Pick a value"
-        @select="onCountrySelect($event)"
-        @remove="onCountryRemove"
-    >
-        <template slot="singleLabel" slot-scope="{ option }">
-            {{ option.name }}>
-        </template>
-    </vue-multiselect>
-
     <div class="contacts__map">
         <l-map
             :center="[49.84766789957655, 23.959183898781497]"
@@ -51,6 +34,26 @@
             </l-marker>
         </l-map>
     </div>
+    <vue-multiselect
+        v-model="selectedCountry"
+        :options="GET_COUNTRIES"
+        :searchable="true"
+        track-by="name"
+        label="name"
+        :close-on-select="true"
+        :show-labels="false"
+        placeholder="Pick a country"
+        deselect-label="Can't remove this value"
+        @select="onCountrySelect($event)"
+        @remove="onCountryRemove"
+    >
+        <template
+            slot="singleLabel"
+            slot-scope="{ option }"
+        >
+            {{ option.name }}>
+        </template>
+    </vue-multiselect>
 </template>
 
 <script>
@@ -62,7 +65,7 @@ import 'vue-multiselect/dist/vue-multiselect.css'
 import {mapActions, mapGetters} from "vuex";
 
 export default {
-    name: "MapBlock",
+    name: "MapPage",
     components: {
         LMap,
         LTileLayer,
