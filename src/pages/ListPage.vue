@@ -1,4 +1,5 @@
 <template>
+    <Toast position="bottom-right"/>
     <DataTable
         ref="table"
         :value="this.GET_DATA"
@@ -89,7 +90,9 @@
         </Column>
         <Column header="Add to favourites" style="min-width:12rem">
             <template #body="{data}">
-                <Button icon="pi pi-heart" />
+                <Button @click="toggleFavourite(data)">
+                    <i :class="checkIsFavourite(data.id)"></i>
+                </Button>
             </template>
         </Column>
         <!--                <Column header="Agent" filterField="representative" :showFilterMenu="false" style="min-width:14rem">-->
@@ -138,7 +141,7 @@
 <script>
 import CustomerService from '../service/CustomerService';
 import {FilterMatchMode,FilterOperator} from 'primevue/api';
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
     name: 'ListPage',
@@ -176,7 +179,8 @@ export default {
     },
     computed: {
         ...mapGetters([
-            'GET_DATA'
+            'GET_DATA',
+            'GET_FAVOURITES'
         ])
     },
     created() {
@@ -197,6 +201,25 @@ export default {
         });
     },
     methods: {
+        ...mapActions([
+            'ACT_TOGGLE_FAVOURITE',
+            'ACT_CHECK_IS_FAVOURITE'
+        ]),
+        checkIsFavourite(id) {
+            if (this.GET_FAVOURITES.some(el => el === id)) {
+                return 'pi pi-heart-fill'
+            } else {
+                return 'pi pi pi-heart'
+            }
+        },
+        toggleFavourite(data) {
+            this.ACT_TOGGLE_FAVOURITE(data.id)
+            if (this.GET_FAVOURITES.some(el => el === data.id)) {
+                this.$toast.add({severity:'success', summary: `${data.name} added to favourites`, life: 3000});
+            } else {
+                this.$toast.add({severity:'warn', summary: `${data.name} removed from favourites`, life: 3000});
+            }
+        },
         formatDate(value) {
             return value.toLocaleDateString('en-US', {
                 day: '2-digit',

@@ -11,12 +11,14 @@ export default (app) => {
 		getters: {
 			GET_SHOPS: state => state.shops,
 			GET_COUNTRIES: state => state.countries,
-			GET_DATA: state => state.data
+			GET_DATA: state => state.data,
+			GET_FAVOURITES: state => state.favourites
 		},
 		mutations: {
 			MUT_SHOPS: (state, data) => state.shops = data,
 			MUT_COUNTRIES: (state, data) => state.countries = data,
-			MUT_DATA: (state, data) => state.data = data
+			MUT_DATA: (state, data) => state.data = data,
+			MUT_FAVOURITES: (state, data) => state.favourites = data
 		},
 		actions: {
 			async ACT_GET_SHOPS({commit}) {
@@ -61,6 +63,23 @@ export default (app) => {
 						commit('MUT_SHOPS', entries.items)
 					})
 					.catch(err => console.log(err))
+			},
+			ACT_TOGGLE_FAVOURITE({state, commit}, id) {
+				console.log(id, 'id')
+				let favourites = state.favourites;
+				if (state.favourites.some(el => el === id)) {
+					favourites = state.favourites.filter(el => el !== id)
+				} else {
+					favourites.push(id)
+				}
+				commit('MUT_FAVOURITES', favourites)
+				console.log(state.favourites)
+			},
+			ACT_CHECK_IS_FAVOURITE({state}, id) {
+				return state.favourites.some(el => el === id)
+			},
+			ACT_GET_FAVOURITES({state, commit}) {
+
 			}
 		}
 
