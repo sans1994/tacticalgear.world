@@ -5,7 +5,8 @@ export default (app) => {
 		state: {
 			shops: [],
 			countries: [],
-			data: []
+			data: [],
+			favourites: []
 		},
 		getters: {
 			GET_SHOPS: state => state.shops,

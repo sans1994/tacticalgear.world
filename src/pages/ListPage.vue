@@ -87,6 +87,11 @@
                 </a>
             </template>
         </Column>
+        <Column header="Add to favourites" style="min-width:12rem">
+            <template #body="{data}">
+                <Button icon="pi pi-heart" />
+            </template>
+        </Column>
         <!--                <Column header="Agent" filterField="representative" :showFilterMenu="false" style="min-width:14rem">-->
         <!--                    <template #body="{data}">-->
         <!--                        <img :alt="data.representative.name" src="https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png" width="32" style="vertical-align: middle" />-->
