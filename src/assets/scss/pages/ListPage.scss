@@ -2,3 +2,8 @@
     max-height: calc(100vh - 700px);
     overflow: scroll;
 }
+.p-datatable-responsive-scroll > .p-datatable-wrapper {
+    overflow-x: auto;
+    height: calc(100vh - 183px);
+    overflow-y: scroll;
+}
