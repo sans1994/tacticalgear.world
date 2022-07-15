@@ -8,7 +8,6 @@
         :rows="15"
         dataKey="id"
         v-model:filters="filters2"
-        filterDisplay="row"
         :loading="loading2"
         responsiveLayout="scroll"
         :globalFilterFields="['name','country.name','representative.name','status']"
@@ -38,17 +37,6 @@
             <template #body="{data}">
                 {{data.name}}
             </template>
-            <template #filter="{filterModel,filterCallback}">
-                <InputText
-                    type="text"
-                    v-model="filterModel.value"
-                    @input="filterCallback()"
-                    @keydown.enter="filterCallback()"
-                    class="p-column-filter"
-                    :placeholder="`Search by name - `"
-                    v-tooltip.top.focus="'Hit enter key to filter'"
-                />
-            </template>
         </Column>
         <Column
             header="Country"
@@ -66,16 +54,6 @@
                                 {{data.country.name}}
                             </span>
                 </div>
-            </template>
-            <template #filter="{filterModel,filterCallback}">
-                <InputText
-                    type="text"
-                    v-model="filterModel.value"
-                    @input="filterCallback()"
-                    class="p-column-filter"
-                    placeholder="Search by country"
-                    v-tooltip.top.focus="'Filter as you type'"
-                />
             </template>
         </Column>
         <Column header="Link" style="min-width:12rem">
