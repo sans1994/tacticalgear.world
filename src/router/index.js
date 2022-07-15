@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import MapPage from "../pages/MapPage.vue";
 import ListPage from "../pages/ListPage.vue";
+import FavouritesPage from "../pages/FavouritesPage.vue";
 import MainLayout from '../layouts/MainLayout.vue'
 export const router = createRouter({
 	history: createWebHistory(),
@@ -20,6 +21,12 @@ export const router = createRouter({
 					path: '/list',
 					components: {
 						tabsList: ListPage
+					}
+				},
+				{
+					path: '/favourites',
+					components: {
+						tabsList: FavouritesPage
 					}
 				}
 			]

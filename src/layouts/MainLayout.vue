@@ -29,6 +29,11 @@ export default {
                     label: 'LIST',
                     icon: 'pi pi-list',
                     to: '/list'
+                },
+                {
+                    label: 'FAVOURITES',
+                    icon: 'pi pi-heart-fill',
+                    to: '/favourites'
                 }
             ]
         }

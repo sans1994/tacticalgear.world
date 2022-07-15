@@ -64,19 +64,19 @@ export default (app) => {
 					})
 					.catch(err => console.log(err))
 			},
-			ACT_TOGGLE_FAVOURITE({state, commit}, id) {
-				console.log(id, 'id')
+			ACT_TOGGLE_FAVOURITE({state, commit}, data) {
 				let favourites = state.favourites;
-				if (state.favourites.some(el => el === id)) {
-					favourites = state.favourites.filter(el => el !== id)
+				if (state.favourites.some(el => el.id === data.id)) {
+					favourites = state.favourites.filter(el => el.id !== data.id)
 				} else {
-					favourites.push(id)
+					favourites.push(data)
 				}
 				commit('MUT_FAVOURITES', favourites)
-				console.log(state.favourites)
+
+				console.log(favourites);
 			},
 			ACT_CHECK_IS_FAVOURITE({state}, id) {
-				return state.favourites.some(el => el === id)
+				return state.favourites.some(el => el.id === id)
 			},
 			ACT_GET_FAVOURITES({state, commit}) {
 
