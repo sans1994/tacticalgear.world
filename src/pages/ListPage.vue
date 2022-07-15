@@ -66,53 +66,13 @@
                 </a>
             </template>
         </Column>
-        <Column header="Add to favourites" style="min-width:12rem">
+        <Column header="Favourites" style="min-width:12rem">
             <template #body="{data}">
                 <Button @click="toggleFavourite(data)">
                     <i :class="checkIsFavourite(data.id)"></i>
                 </Button>
             </template>
         </Column>
-        <!--                <Column header="Agent" filterField="representative" :showFilterMenu="false" style="min-width:14rem">-->
-        <!--                    <template #body="{data}">-->
-        <!--                        <img :alt="data.representative.name" src="https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png" width="32" style="vertical-align: middle" />-->
-        <!--                        <span class="image-text">{{data.representative.name}}</span>-->
-        <!--                    </template>-->
-        <!--                    <template #filter="{filterModel,filterCallback}">-->
-        <!--                        <MultiSelect v-model="filterModel.value" @change="filterCallback()" :options="representatives" optionLabel="name" placeholder="Any" class="p-column-filter">-->
-        <!--                            <template #option="slotProps">-->
-        <!--                                <div class="p-multiselect-representative-option">-->
-        <!--                                    <img :alt="slotProps.option.name" src="https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png" width="32" style="vertical-align: middle" />-->
-        <!--                                    <span class="image-text">{{slotProps.option.name}}</span>-->
-        <!--                                </div>-->
-        <!--                            </template>-->
-        <!--                        </MultiSelect>-->
-        <!--                    </template>-->
-        <!--                </Column>-->
-        <!--                <Column field="status" header="Status" :showFilterMenu="false" style="min-width:12rem">-->
-        <!--                    <template #body="{data}">-->
-        <!--                        <span :class="'customer-badge status-' + data.status">{{data.status}}</span>-->
-        <!--                    </template>-->
-        <!--                    <template #filter="{filterModel,filterCallback}">-->
-        <!--                        <Dropdown v-model="filterModel.value" @change="filterCallback()" :options="statuses" placeholder="Any" class="p-column-filter" :showClear="true">-->
-        <!--                            <template #value="slotProps">-->
-        <!--                                <span :class="'customer-badge status-' + slotProps.value" v-if="slotProps.value">{{slotProps.value}}</span>-->
-        <!--                                <span v-else>{{slotProps.placeholder}}</span>-->
-        <!--                            </template>-->
-        <!--                            <template #option="slotProps">-->
-        <!--                                <span :class="'customer-badge status-' + slotProps.option">{{slotProps.option}}</span>-->
-        <!--                            </template>-->
-        <!--                        </Dropdown>-->
-        <!--                    </template>-->
-        <!--                </Column>-->
-        <!--                <Column field="verified" header="Verified" dataType="boolean" style="min-width:6rem">-->
-        <!--                    <template #body="{data}">-->
-        <!--                        <i class="pi" :class="{'true-icon pi-check-circle': data.verified, 'false-icon pi-times-circle': !data.verified}"></i>-->
-        <!--                    </template>-->
-        <!--                    <template #filter="{filterModel,filterCallback}">-->
-        <!--                        <TriStateCheckbox v-model="filterModel.value" @change="filterCallback()"/>-->
-        <!--                    </template>-->
-        <!--                </Column>-->
     </DataTable>
 </template>
 
@@ -136,21 +96,6 @@ export default {
                 'status': {value: null, matchMode: FilterMatchMode.EQUALS},
                 'verified': {value: null, matchMode: FilterMatchMode.EQUALS}
             },
-            representatives: [
-                {name: "Amy Elsner", image: 'amyelsner.png'},
-                {name: "Anna Fali", image: 'annafali.png'},
-                {name: "Asiya Javayant", image: 'asiyajavayant.png'},
-                {name: "Bernardo Dominic", image: 'bernardodominic.png'},
-                {name: "Elwin Sharvill", image: 'elwinsharvill.png'},
-                {name: "Ioni Bowcher", image: 'ionibowcher.png'},
-                {name: "Ivan Magalhaes",image: 'ivanmagalhaes.png'},
-                {name: "Onyama Limba", image: 'onyamalimba.png'},
-                {name: "Stephen Shaw", image: 'stephenshaw.png'},
-                {name: "XuXue Feng", image: 'xuxuefeng.png'}
-            ],
-            statuses: [
-                'unqualified', 'qualified', 'new', 'negotiation', 'renewal', 'proposal'
-            ],
             loading1: true,
             loading2: true
         }
@@ -177,6 +122,11 @@ export default {
             this.loading2 = false;
             this.customers2.forEach(customer => customer.date = new Date(customer.date));
         });
+    },
+    watch: {
+        '$store.state.data': (oldVal, newVal) => {
+            console.log(oldVal);
+        }
     },
     methods: {
         ...mapActions([
