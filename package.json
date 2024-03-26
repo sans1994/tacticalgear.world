@@ -19,7 +19,7 @@
     "axios": "^0.24.0",
     "contentful": "^9.1.32",
     "dotenv": "^16.0.1",
-    "express": "^4.17.2",
+    "express": "^4.19.2",
     "leaflet": "^1.8.0",
     "primeflex": "^3.2.1",
     "primeicons": "^5.0.0",
